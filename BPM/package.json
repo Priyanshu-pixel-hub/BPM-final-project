@@ -1,0 +1,19 @@
+{
+  "name": "bpm-exception-recovery-simulator",
+  "version": "1.0.0",
+  "description": "Modeling Exception Handling and Process Recovery in Business Processes",
+  "scripts": {
+    "start:backend": "node backend/server.js",
+    "start:frontend": "cd frontend && npm run dev",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": [
+    "business-process",
+    "exception-handling",
+    "process-recovery",
+    "compensation",
+    "workflow"
+  ],
+  "author": "College Research Project",
+  "license": "ISC"
+}
