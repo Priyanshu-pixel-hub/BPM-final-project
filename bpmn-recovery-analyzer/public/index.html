@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>BPMN Recovery Analyzer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css"></head>
+<body><header class="top noprint"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span>BPMN Recovery Analyzer</span><span style="font:500 14px 'Public Sans',sans-serif"><span id="who" class="mute"></span> <button class="alt" id="logout" style="padding:5px 12px">Sign out</button></span></div></header>
+<main>
+<section class="noprint">
+<h1>Find out how a business process should recover when it fails</h1>
+<p class="mute">Upload a BPMN 2.0 file (.bpmn or .xml). The server analyzes it and saves the report to your account, and shows which recovery strategy (retry, rollback, compensation or escalation) fits each task.</p>
+<div class="drop" id="drop"><input id="file" type="file" accept=".bpmn,.xml,text/xml" hidden>
+<button id="pick">Choose BPMN file</button><button class="alt" id="demo">Analyze sample order process</button><span class="mute">or drop a file here</span></div>
+<div class="err" id="err" role="alert"></div>
+</section>
+<div id="out"></div>
+<section class="noprint"><h2>Your 5 most recent uploads</h2><div class="tw hist" id="hist"></div></section>
+</main>
+<script src="/report.js"></script><script src="/sample.js"></script><script src="/app.js"></script>
+</body></html>

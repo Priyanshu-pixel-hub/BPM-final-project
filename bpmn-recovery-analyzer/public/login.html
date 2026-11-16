@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Sign in · BPMN Recovery Analyzer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>.card{max-width:400px;margin:8vh auto 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:26px}
+label{display:block;font-weight:600;margin:14px 0 4px}input{width:100%;font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+input:focus-visible{outline:3px solid var(--retry);outline-offset:1px}.row{display:flex;gap:10px;margin-top:20px;align-items:center;flex-wrap:wrap}
+.link{background:none;border:0;color:var(--retry);padding:0;text-decoration:underline}</style></head>
+<body><main>
+<h1 style="font-size:32px;text-align:center">BPMN Recovery Analyzer</h1>
+<p class="mute" style="text-align:center;margin:8px auto">Sign in to upload BPMN files and see your recent reports.</p>
+<form class="card" id="f">
+<h2 id="title" style="margin:0 0 4px;font-size:22px">Sign in</h2>
+<label for="u">Username</label><input id="u" autocomplete="username" required>
+<label for="p">Password</label><input id="p" type="password" autocomplete="current-password" required>
+<div class="err" id="err" role="alert"></div>
+<div class="row"><button id="go">Sign in</button><button type="button" class="link" id="sw">Create an account</button></div>
+</form></main>
+<script>
+const $=s=>document.querySelector(s);let reg=false;
+fetch("/api/me").then(r=>{if(r.ok)location="/"});
+$("#sw").onclick=()=>{reg=!reg;$("#title").textContent=reg?"Create an account":"Sign in";$("#go").textContent=reg?"Create account":"Sign in";$("#sw").textContent=reg?"I already have an account":"Create an account";$("#p").autocomplete=reg?"new-password":"current-password";$("#err").textContent=""};
+$("#f").onsubmit=async e=>{e.preventDefault();$("#err").textContent="";
+ const r=await fetch(reg?"/api/register":"/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username:$("#u").value,password:$("#p").value})}),j=await r.json().catch(()=>({}));
+ r.ok?location="/":$("#err").textContent=j.error||"Something went wrong."};
+</script></body></html>

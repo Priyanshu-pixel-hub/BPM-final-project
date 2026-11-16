@@ -1,0 +1,35 @@
+
+:root{--bg:#eef1f4;--panel:#fff;--ink:#14232e;--mute:#5b6b78;--line:#d3dae0;--retry:#0e7c86;--rollback:#4b4fb3;--comp:#b86e00;--esc:#b3262e;--ok:#2e7d4f;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a22;--panel:#16252f;--ink:#e6edf2;--mute:#92a4b2;--line:#2b3f4c;--retry:#3cc0cc;--rollback:#8e92ff;--comp:#f0a63a;--esc:#ff6b73;--ok:#5fc98a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1a22;--panel:#16252f;--ink:#e6edf2;--mute:#92a4b2;--line:#2b3f4c;--retry:#3cc0cc;--rollback:#8e92ff;--comp:#f0a63a;--esc:#ff6b73;--ok:#5fc98a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 "Public Sans",system-ui,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:28px 18px 60px}
+h1,h2,h3{font-family:"Familjen Grotesk",system-ui,sans-serif;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,5vw,46px);font-weight:700;max-width:16em}h2{font-size:24px;margin:38px 0 12px}h3{font-size:17px}
+p{margin:.4em 0;max-width:68ch}.mute{color:var(--mute)}
+.drop{margin-top:20px;border:2px dashed var(--line);border-radius:10px;padding:26px;background:var(--panel);display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.drop.over{border-color:var(--retry)}
+button,.btn{font:600 14px "Public Sans",sans-serif;border:1px solid var(--ink);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:6px;cursor:pointer}
+button.alt{background:transparent;color:var(--ink)}button:focus-visible,summary:focus-visible{outline:3px solid var(--retry);outline-offset:2px}
+.err{color:var(--esc);font-weight:600;margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:16px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px}.stat b{display:block;font:700 26px "Familjen Grotesk"}.stat span{font-size:13px;color:var(--mute)}
+.mix{display:flex;height:14px;border-radius:3px;overflow:hidden;margin:10px 0}.mix i{display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px}.legend span:before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:2px;background:var(--c)}
+.dia{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px;overflow-x:auto}.dia svg{min-width:640px;width:100%;height:auto}
+.find{display:grid;gap:8px}.f{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;padding:10px 14px}.f b{font-weight:600}
+.f.high{--c:var(--esc)}.f.med{--c:var(--comp)}.f.low{--c:var(--retry)}.f.ok{--c:var(--ok)}
+.tw{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:14px}th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{font-weight:600;color:var(--mute)}
+.tag{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12.5px;font-weight:600;color:#fff;background:var(--c)}
+.t-retry{--c:var(--retry)}.t-rollback{--c:var(--rollback)}.t-comp{--c:var(--comp)}.t-esc{--c:var(--esc)}
+.t-High{--c:var(--esc)}.t-Medium{--c:var(--comp)}.t-Low{--c:var(--ok)}
+details{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin:8px 0;padding:10px 14px}summary{cursor:pointer;font-weight:600}
+details ul,details ol{margin:8px 0;padding-left:20px}li{margin:3px 0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+#out{display:none}
+@media print{.noprint{display:none!important}body{background:#fff;color:#000}details{break-inside:avoid}details[open] summary~*{display:block}}
+
+header.top{border-bottom:1px solid var(--line);background:var(--panel)}header.top div{max-width:1040px;margin:0 auto;padding:12px 18px;font:700 18px "Familjen Grotesk",sans-serif}
+.hist td button{padding:4px 10px;margin-right:6px}.empty{padding:16px}.spin{opacity:.6}
